@@ -31,13 +31,13 @@
             <template slot="title">
               <h4 style="margin-left: 10px">各大公司学历要求</h4><i class="header-icon el-icon-info"></i>
             </template>
-            <el-button @click="MCforecast" type="primary" >生成图表</el-button>
+            <el-button @click="MCforecast" type="primary" style="margin-left: 150px" >生成图表</el-button>
           </el-collapse-item>
           <el-collapse-item >
             <template slot="title">
               <h4 style="margin-left: 10px">总和</h4><i class="header-icon el-icon-info"></i>
             </template>
-            <button @click="select()" class="button">总和</button>
+            <el-button @click="select" type="primary" style="margin-left: 150px" >总和</el-button>
           </el-collapse-item>
           <el-collapse-item >
             <template slot="title">
@@ -61,13 +61,13 @@
                   <el-col :span="15">
                     <el-form-item>
                       <el-select v-model="domain.value" placeholder="请选择所需维度" display="flex" style="width: 160px">
-                        <el-option label="销量" value="0"></el-option>
-                        <el-option label="库存量" value="1"></el-option>
+                        <el-option label="薪资" value="0"></el-option>
+                        <el-option label="学历" value="1"></el-option>
                         <el-option label="自定义公式" value="2" ></el-option>
                       </el-select>
                       <div v-if="domain.value==2">
                         <el-input v-model="cusname" autocomplete="off" placeholder="请输入维度名称"></el-input>
-                        <el-tooltip class="item" effect="dark" content="x代表销量,y代表库存" placement="top">
+                        <el-tooltip class="item" effect="dark" content="x代表薪资,y代表学历" placement="top">
                           <el-input v-model="custom" autocomplete="off" placeholder="请输入自定义公式" @blur.prevent="forcustom"></el-input>
                         </el-tooltip>
                       </div>
@@ -86,8 +86,8 @@
                 </el-switch>
                 <div v-if="form.desc==true">
                   <el-radio-group v-model="radio">
-                    <el-radio :label="3">销量</el-radio>
-                    <el-radio :label="6">库存量</el-radio>
+                    <el-radio :label="3">薪资</el-radio>
+                    <el-radio :label="6">学历</el-radio>
                   </el-radio-group>
                 </div>
               </el-form-item>

@@ -168,7 +168,6 @@
                     console.log(res.data);
                     this.$message.success("发送成功");
                     this.reload();
-                    location.href='mailto:info@sina.com'
                 })
             },
 

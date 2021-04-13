@@ -2,7 +2,8 @@
     <div class="login-wrap">
         <div class="ms-login">
             <div class="ms-title">招聘信息分析系统</div>
-            <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
+            <router-link to="/Mlogin" ><el-link type="primary" style="margin-top: 5px;margin-left: 220px ;">短信验证码登录</el-link></router-link>
+            <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content" style="margin-top: -20px">
                 <el-form-item prop="id">
                     <el-input v-model="param.id" placeholder="请输入账号">
                         <el-button slot="prepend" icon="el-icon-lx-people"></el-button>

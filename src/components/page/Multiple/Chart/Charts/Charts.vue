@@ -1,8 +1,8 @@
 <template>
   <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-  <div id="id1" style=" width:1080px ;height:580px;" v-if="this.len<2"></div>
-  <div style=" width:450px ;height:450px;" v-else-if="this.len==2"></div>
-  <div  style=" width:250px ;height:250px;" v-else-if="this.len>2"></div>
+  <div id="id1" style=" width:1200px ;height:580px;" v-if="this.len<2"></div>
+  <div style=" width:550px ;height:450px;" v-else-if="this.len==2"></div>
+  <div  style=" width:320px ;height:250px;" v-else-if="this.len>2"></div>
 </template>
 
 <script>

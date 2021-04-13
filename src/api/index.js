@@ -21,6 +21,14 @@ function getUserInfoById(id){
     });
 }
 
+
+function getUserByNumber(num){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getUserByNumber/"+num,
+    });
+}
+
 function selectJob(name){
     return axios({
         method: "GET",
@@ -277,9 +285,84 @@ function addColInfo(jobid,userid,coid,name,money,workarea,coname,cotype,cosize,j
     });
 }
 
+function getAna1(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna1"
+    });
+}
+
+function getAna2(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna2"
+    });
+}
+
+function getAna3(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna3"
+    });
+}
+
+function getAna4(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna4"
+    });
+}
+
+function getAna5(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna5"
+    });
+}
+function getAna6(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna6"
+    });
+}
+
+function getAna7(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna7"
+    });
+}
+
+function getAna8(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna8"
+    });
+}
+
+function getAna9(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna9"
+    });
+}
+
+function getAna10(){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getAna10"
+    });
+}
+
+function getMessage(num){
+    return axios({
+        method: "GET",
+        url: "http://localhost:8080/getMessage/"+num
+    });
+}
 export default {
     getUserInfo,getUserInfoById,addUserInfo,updatePassword,deleteUserInfoById,updateUserInfoById,updatePicture,updateAdmin,getLocation,getColNum,getDelNum,reset,queryJobInfo,
     initCol,initDel,deleteJobInfoById,getColByUserId,deleteColById,getDelByUserId,deleteDelById,updateRecycle,updateDelTime,addDelInfo,resetCol,initColDel,addColInfo,selectJob,
-    selectCol,selectInfo
+    selectCol,selectInfo,getAna1,getAna2,getAna3,getAna4,getAna5,getAna6,getAna7,getAna8,getAna9,getAna10,getMessage,getUserByNumber
     
 }

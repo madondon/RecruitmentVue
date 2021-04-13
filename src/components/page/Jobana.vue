@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div class="box"  >
         <el-card   style="margin-left: 30px;margin-top: 30px">
         <div id="id1" class="box1"></div>
         </el-card>
@@ -33,13 +33,13 @@
     import echarts from 'echarts'
     import 'echarts-gl';
     import wordcloud from 'vue-wordcloud'
-    var data = [[0,0,5],[0,1,1],[0,2,0],[0,3,0],
-        [1,0,7],[1,1,0],[1,2,0],[1,3,0],
-        [2,0,1],[2,1,1],[2,2,0],[2,3,0],
-        [3,0,7],[3,1,3],[3,2,0],[3,3,0],
-        [4,0,1],[4,1,3],[4,2,0],[4,3,0],
-        [5,0,2],[5,1,1],[5,2,0],[5,3,3],
-        [6,0,1],[6,1,0],[6,2,0],[6,3,0]];
+    import $axios from "../../api/index"
+    var data = 
+       [[0,0,5],[0,1,1],[0,2,0],[0,3,0],[0,4,1],[0,5,0],[0,6,0],
+        [1,0,7],[1,1,0],[1,2,0],[1,3,0],[1,4,1],[1,5,0],[1,6,0],
+        [2,0,1],[2,1,1],[2,2,0],[2,3,0],[2,4,1],[2,5,0],[2,6,0],
+        [3,0,7],[3,1,3],[3,2,0],[3,3,0],[3,4,1],[3,5,0],[3,6,0],
+        [4,0,1],[4,1,3],[4,2,0],[4,3,0],[4,4,1],[4,5,0],[4,6,0]];
 
     export default {
         name: "Home",
@@ -57,9 +57,9 @@
                             fontSize:10
                         }
                     },
-                    color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
+                    color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00','#FF6347'],
                     tooltip: {
-                        trigger: 'axis',
+                        trigger: 'item',
                         axisPointer: {
                             type: 'cross',
                             label: {
@@ -67,10 +67,6 @@
                             }
                         }
                     },
-                    // legend: {
-                    //     data: ['Java后端开发', 'Python工程师', 'Android工程师', '大数据工程师', '前端开发工程师'],
-                    //     top:"6%",
-                    // },
                     toolbox: {
                         feature: {
                             saveAsImage: {}
@@ -86,7 +82,7 @@
                         {
                             type: 'category',
                             boundaryGap: false,
-                            data: ['高中','高职', '专科', '本科', '研究生', '博士']
+                            data: ['中专','高中', '专科', '本科', '硕士']
                         }
                     ],
                     yAxis: [
@@ -96,7 +92,7 @@
                     ],
                     series: [
                         {
-                            name: 'Java后端开发',
+                            name: '',
                             type: 'line',
                             stack: '总量',
                             smooth: true,
@@ -111,16 +107,16 @@
                                     color: 'rgba(128, 255, 165)'
                                 }, {
                                     offset: 1,
-                                    color: 'rgba(1, 191, 236)'
+                                    color: 'rgba(67, 205, 236)'
                                 }])
                             },
                             emphasis: {
                                 focus: 'series'
                             },
-                            data: [140, 232, 101, 264, 90, 340, 250]
+                            data: []
                         },
                         {
-                            name: 'Python工程师',
+                            name: '',
                             type: 'line',
                             stack: '总量',
                             smooth: true,
@@ -141,10 +137,10 @@
                             emphasis: {
                                 focus: 'series'
                             },
-                            data: [120, 282, 111, 234, 220, 340, 310]
+                            data: []
                         },
                         {
-                            name: 'Android工程师',
+                            name: '',
                             type: 'line',
                             stack: '总量',
                             smooth: true,
@@ -165,10 +161,10 @@
                             emphasis: {
                                 focus: 'series'
                             },
-                            data: [320, 132, 201, 334, 190, 130, 220]
+                            data: []
                         },
                         {
-                            name: '大数据工程师',
+                            name: '',
                             type: 'line',
                             stack: '总量',
                             smooth: true,
@@ -189,10 +185,10 @@
                             emphasis: {
                                 focus: 'series'
                             },
-                            data: [220, 402, 231, 134, 190, 230, 120]
+                            data: []
                         },
                         {
-                            name: '前端开发工程师',
+                            name: '',
                             type: 'line',
                             stack: '总量',
                             smooth: true,
@@ -217,7 +213,35 @@
                             emphasis: {
                                 focus: 'series'
                             },
-                            data: [220, 302, 181, 234, 210, 290, 150]
+                            data: []
+                        },
+                           {
+                            name: '',
+                            type: 'line',
+                            stack: '总量',
+                            smooth: true,
+                            lineStyle: {
+                                width: 0
+                            },
+                            showSymbol: false,
+                            label: {
+                                show: true,
+                                position: 'top'
+                            },
+                            areaStyle: {
+                                opacity: 0.8,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgba(255, 99, 71)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(255,99,71)'
+                                }])
+                            },
+                            emphasis: {
+                                focus: 'series'
+                            },
+                            data: []
                         }
                     ]
                 },
@@ -244,12 +268,12 @@
                     },
                     xAxis3D: {
                         type: 'category',
-                        data: ['一年以下','一到三年','三到五年','五年以上',],
+                        data:['0年', '1年', '2年',
+                            '3-4年', '5-7年', '8-9年','10年以上'] 
                     },
                     yAxis3D: {
                         type: 'category',
-                        data:  ['高中', '高职', '专科',
-                            '本科', '硕士', '博士']
+                        data:  ['高中','专科','本科','硕士','博士']
                     },
                     zAxis3D: {
                         type: 'value'
@@ -312,10 +336,6 @@
                     tooltip: {
                         trigger: 'item'
                     },
-                    // legend: {
-                    //     left: 'center',
-                    //     top:"6%",
-                    // },
                     series: [
                         {
                             name: '访问来源',
@@ -380,12 +400,11 @@
                             }
                         },
                         indicator: [
-                            { name: '高中', max: 6500},
-                            { name: '高职', max: 16000},
-                            { name: '专科', max: 30000},
-                            { name: '本科', max: 38000},
-                            { name: '硕士', max: 52000},
-                            { name: '博士', max: 25000}
+                            { name: '中专', max: 100},
+                            { name: '高中', max: 100},
+                            { name: '专科', max: 5000},
+                            { name: '本科', max: 5000},
+                            { name: '硕士', max: 500}
                         ]
                     },
                     series: [{
@@ -394,76 +413,32 @@
                         // areaStyle: {normal: {}},
                         data: [
                             {
-                                value: [4300, 10000, 28000, 35000, 50000, 19000],
-                                name: 'Python工程师'
+                                value: [],
+                                name: ''
                             },
                             {
-                                value: [5000, 14000, 28000, 31000, 42000, 21000],
-                                name: 'Java工程师'
+                                value: [],
+                                name: ''
                             },
                             {
-                                value: [2000, 11000, 14000, 11000, 42000, 12000],
-                                name: '大数据工程师'
+                                value: [],
+                                name: ''
                             },
                             {
-                                value: [5000, 11000, 25000, 24000, 49000, 11000],
-                                name: 'PHP工程师'
+                                value: [],
+                                name: ''
+                            },
+                            {
+                                value: [],
+                                name: ''
+                            },
+                            {
+                                value: [],
+                                name: ''
                             }
                         ]
                     }]
                 },
-                defaultWords: [
-                    {
-                    "name": "Java后端开发",
-                    "value": 26
-                    },
-                    {
-                        "name": "Python工程师",
-                        "value": 19
-                    },
-                    {
-                        "name": "Android工程师",
-                        "value": 18
-                    },
-                    {
-                        "name": "大数据工程师",
-                        "value": 16
-                    },{
-                        "name": "前端工程师",
-                        "value": 19
-                    },
-                    {
-                        "name": "数据分析师",
-                        "value": 18
-                    },
-                    {
-                        "name": "运维工程师",
-                        "value": 16
-                    },{
-                        "name": "Python工程师",
-                        "value": 19
-                    },
-                    {
-                        "name": "Android工程师",
-                        "value": 18
-                    },
-                    {
-                        "name": "大数据工程师",
-                        "value": 16
-                    },{
-                        "name": "前端工程师",
-                        "value": 19
-                    },
-                    {
-                        "name": "数据分析师",
-                        "value": 18
-                    },
-                    {
-                        "name": "运维工程师",
-                        "value": 16
-                    },
-
-                ],
                 option4: {
                     title: {
                         text: '低均高-薪资图',
@@ -478,10 +453,12 @@
                     dataset: {
                         dimensions: ['product', '最小', '平均', '最高'],
                         source: [
-                            {product: 'Java', '最小': 43.3, '平均': 85.8, '最高': 93.7},
-                            {product: '前端', '最小': 83.1, '平均': 73.4, '最高': 55.1},
-                            {product: '大数据', '最小': 86.4, '平均': 65.2, '最高': 82.5},
-                            {product: 'Python', '最小': 72.4, '平均': 53.9, '最高': 39.1}
+                            {product: '1', '最小':0, '平均':0 , '最高':0 },
+                            {product: '1', '最小':0, '平均':0 , '最高':0 },
+                            {product: '1', '最小':0, '平均':0 , '最高':0 },
+                            {product: '1', '最小':0, '平均':0 , '最高':0 },
+                            {product: '1', '最小':0, '平均':0 , '最高':0 },
+                            {product: '1', '最小':0, '平均':0 , '最高':0 }
                         ]
                     },
                     xAxis: {type: 'category'},
@@ -493,15 +470,68 @@
                         {type: 'bar'},
                         {type: 'bar'}
                     ]
-                }
+                },
+                defaultWords: []
             }
         },
         mounted(){
-            this.initChart();
-            this.initChart1();
-            this.initChart2();
-            this.initChart3();
-            this.initChart4();
+             $axios.getAna1().then(res => {
+                for(var i=0;i<res.data.length;i++)
+                if(i==0)
+                {
+                    this.option.series[0].name=res.data[i].name
+                    this.option.series[0].data.push(res.data[i].money)
+                }
+                else
+                { 
+                    this.option.series[parseInt(i/5)].name=res.data[i].name
+                    this.option.series[parseInt(i/5)].data.push(res.data[i].money)
+                }
+                    this.initChart();
+            });
+             $axios.getAna2().then(res => {
+                 for(var i=0;i<res.data.length;i++)
+                 {
+                     data[i].splice(data[i].length-1,1,res.data[i].money);
+                 }
+                 this.option1.series[0].data=data.map(function (item) {
+                            return {value: [item[1], item[0], item[2]]}
+                        }),
+                 this.initChart1();
+            });
+             $axios.getAna3().then(res => {
+                 this.option2.series[0].data=res.data
+                 this.initChart2();
+            });
+             $axios.getAna4().then(res => {
+                for(var i=0;i<res.data.length;i++)
+                {
+                if(i==0)
+                {
+                    this.option3.series[0].data[0].name=res.data[i].name
+                    this.option3.series[0].data[0].value.push(res.data[i].count)
+                }
+                else
+                { 
+                    this.option3.series[0].data[parseInt(i/5)].name=res.data[i].name
+                    this.option3.series[0].data[parseInt(i/5)].value.push(res.data[i].count)
+                }
+                }
+                    this.initChart3();
+            });
+             $axios.getAna5().then(res => {
+               for(var i=0;i<res.data.length;i++)
+               {
+                   this.option4.dataset.source[i].product=res.data[i].name;
+                   this.option4.dataset.source[i].最小=res.data[i].min;
+                   this.option4.dataset.source[i].平均=res.data[i].avg;
+                   this.option4.dataset.source[i].最高=res.data[i].max;
+                }
+                this.initChart4();
+            });
+             $axios.getAna6().then(res => {
+                this.defaultWords=res.data
+            });
         },
         methods: {
             initChart() { // 通过 echarts.init 方法初始化一个 echarts 实例并通过 setOption 方法生成一个简单的柱状图
@@ -535,6 +565,12 @@
 
 <style>
     .box{
+        background: url("../../assets/img/bg.jpg") no-repeat;
+        background-position: center;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        position: fixed;
         display: flex;
         flex-wrap:wrap;
     }

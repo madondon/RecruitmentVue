@@ -87,9 +87,7 @@
                                     <el-button @click="handleDelivery(scope.$index+pagesize*(currentPage-1))" type="primary" round v-else>投&nbsp&nbsp&nbsp递</el-button>
                                 </div>
                                 <div v-else>
-                                    <el-tooltip class="item" effect="dark" content="该招聘信息已删除" placement="top">
-                                        <el-button @click="handleDel(scope.$index+pagesize*(currentPage-1))" type="warning" round disabled>取&nbsp&nbsp&nbsp消</el-button>
-                                    </el-tooltip>
+                                        <el-button @click="handleDel(scope.$index+pagesize*(currentPage-1))" type="warning" round>取&nbsp&nbsp&nbsp消</el-button>
                                     <el-tooltip class="item" effect="dark" content="该招聘信息已删除" placement="top">
                                         <el-button @click="handleDelivery(scope.$index+pagesize*(currentPage-1), scope.row)" type="info" round v-if="tableData[scope.$index+pagesize*(currentPage-1)].deled===1" disabled>已投递</el-button>
                                         <el-button @click="handleDelivery(scope.$index+pagesize*(currentPage-1))" type="primary" round v-else disabled>投&nbsp&nbsp&nbsp递</el-button>
@@ -236,7 +234,6 @@
                         this.$message.success("投递成功");
                         this.dialogDeliveryVisible=false;
                         this.tableData[this.index].deled=1;
-                        location.href='mailto:info@sina.com'
                     });
             },
 

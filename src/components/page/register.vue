@@ -17,7 +17,13 @@
                     <el-input v-model="ruleForm.name" style="width:80%" placeholder="请输入姓名"></el-input>
                 </el-form-item>
                 <el-form-item label="身份" prop="identity">
-                    <el-input v-model="ruleForm.identity" style="width:80%" placeholder="请输入身份"></el-input>
+                    <el-select v-model="ruleForm.identity" placeholder="请选择身份" style="width:80%">
+                        <el-option label="在校生" value="在校生"></el-option>
+                        <el-option label="应届生" value="应届生"></el-option>
+                        <el-option label="海归" value="海归"></el-option>
+                        <el-option label="在职人员" value="在职人员"></el-option>
+                        <el-option label="离职人员" value="离职人员"></el-option>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="性别" prop="sex">
                     <el-radio-group v-model="ruleForm.sex" style="width:80%">
@@ -46,7 +52,7 @@
                 <el-form-item  label="电话" prop="phone">
                     <el-input v-model="ruleForm.phone" autocomplete="off" placeholder="请输入电话"  onkeyup="this.value = this.value.replace(/[^\d.]/g,'');" maxlength="11" style="width:80%"></el-input>
                 </el-form-item>
-                <el-form-item label="邮件" prop="mail" >
+                <el-form-item label="邮箱" prop="mail" >
                     <el-input v-model="ruleForm.mail" style="width:80%" placeholder="请输入邮箱"></el-input>
                 </el-form-item>
                 <el-form-item label="关键字">
@@ -186,7 +192,7 @@
                     return;
                 }if(this.ruleForm.mail==='')
                 {
-                    this.$message.error('手机号不能为空！');
+                    this.$message.error('邮箱号不能为空！');
                     return;
                 }
                 let reg=/^1\d{10}$/;
